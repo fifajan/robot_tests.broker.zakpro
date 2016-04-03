@@ -4,7 +4,7 @@ users:
         homepage: "https://market.zakupkipro.com/"
         login:    owner.t@zakupkipro.com
         password: own_pwd_44
-        browser:  chrome
+        browser:  firefox
         position: [0, 0]
         size:     [800, 800]
     Zakpro_Provider1:
@@ -12,7 +12,7 @@ users:
         homepage: "https://market.zakupkipro.com/"
         login:    provider1.t@zakupkipro.com
         password: pr1_pwd_55
-        browser:  chrome
+        browser:  firefox
         position: [700, 0]
         size:     [700, 800]
     Zakpro_Provider2:
@@ -20,13 +20,13 @@ users:
         homepage: "https://market.zakupkipro.com/"
         login:    provider2.t@zakupkipro.com
         password: pr2_pwd_66
-        browser:  chrome
+        browser:  firefox
         position: [700, 0]
         size:     [640, 450]
     Zakpro_Viewer:
         broker:   Zakpro
         homepage: "https://market.zakupkipro.com/"
-        browser:  chrome
+        browser:  firefox
         position: [0, 0]
  
         provider:       Zakpro_Provider1
