@@ -1,6 +1,6 @@
 from setuptools import setup
 
-broker_name = 'smarttender'
+broker_name = 'zakpro'
 pkg_name = 'robot_tests.broker.{}'.format(broker_name)
 
 setup(name=pkg_name,
@@ -8,5 +8,5 @@ setup(name=pkg_name,
       description='{} broker for OpenProcurement Robot tests'.format(broker_name),
       author='',
       author_email='',
-      url='https://github.com/openprocurement/{}'.format(pkg_name),
+      url='https://github.com/fifajan/{}'.format(pkg_name),
       )
