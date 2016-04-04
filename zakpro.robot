@@ -70,9 +70,9 @@ Login
   ...      ${ARGUMENTS[0]} ==  username
   ...      ${ARGUMENTS[1]} ==  tender_data
 
-  Click Element xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
   Sleep 1
-  Click Element xpath=//a[@href='/accounts/tender/create/']
+  Click Element    xpath=//a[@href='/accounts/tender/create/']
   Sleep 10
 
 ### Создание тендера
