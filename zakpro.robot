@@ -63,7 +63,7 @@ Login
     Input text      ${password_sign_in}       ${USERS.users['${username}'].password}
     Click Button    name=login_submit
     Wait Until Page Contains Element   xpath =//a[@href='/accounts/mailbox/']  20
-    Sleep 10
+    Sleep   10
 
 
 Створити тендер
