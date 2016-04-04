@@ -28,12 +28,7 @@ users:
         homepage: "https://market.zakupkipro.com/"
         browser:  firefox
         position: [160, 160]
-        position: [1280, 800]
- 
-        provider:       Zakpro_Provider1
-        provider1:      Zakpro_Provider2
-        tender_owner:   Zakpro_Owner
-        viewer:         Zakpro_Viewer
+        size: [1280, 800]
     Tender_Owner:
         api_key:  e9c3ccb8e8124f26941d5f9639a4ebc3
         broker:   Quinta
