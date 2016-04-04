@@ -80,50 +80,25 @@ Login
   ${end_date}=      convert_date_to_slash_format   ${end_date}
 
   Selenium2Library.Switch Browser     ${ARGUMENTS[0]}
-  Wait Until Page Contains Element    jquery=a[href="/tenders/new"]   30
-  Click Element                       jquery=a[href="/tenders/new"]
-  Wait Until Page Contains Element    name=tender_title   30
-  Input text                          name=tender_title    ${title}
-  Input text                          name=tender_description    ${description}
-  Input text                          name=tender_value_amount   ${budget}
-  Input text                          name=tender_minimalStep_amount   ${step_rate}
+  Wait Until Page Contains Element    xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/span   30
+  Click Element                       xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/span
+  Wait Until Page Contains Element    xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[2]/a   30
+  Click Element                       xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[2]/a
+  Wait Until Page Contains Element    name=title   30
+  Input text                          name=title    ${title}
+  Input text                          name=description    ${description}
+  Input text                          name=value_amount   ${budget}
+  Input text                          name=minimalStep_amount   ${step_rate}
 
 # Додати специфікацю початок
-  Input text                          name=items[0][item_description]    ${items_description}
-  Input text                          name=items[0][item_quantity]   ${quantity}
-  Input text                          name=items[0][item_deliveryAddress_countryName]   ${countryName}
-  Input text                          name=items[0][item_deliveryDate_endDate]       ${delivery_end_date}
-  Click Element                       xpath=//a[contains(@data-class, 'cpv')][./text()='Визначити за довідником']
-  Select Frame                        xpath=//iframe[contains(@src,'/js/classifications/cpv/uk.htm?relation=true')]
-  Input text                          id=search     ${cpv}
-  Wait Until Page Contains            ${cpv_id}
-  Click Element                       xpath=//a[contains(@id,'${cpv_id1}')]
-  Click Element                       xpath=.//*[@id='select']
-  Unselect Frame
-  Click Element                       xpath=//a[contains(@data-class, 'dkpp')][./text()='Визначити за довідником']
-  Select Frame                        xpath=//iframe[contains(@src,'/js/classifications/dkpp/uk.htm?relation=true')]
-  Input text                          id=search     ${dkpp_desc}
-  Wait Until Page Contains            ${dkpp_id}
-  Click Element                       xpath=//a[contains(@id,'${dkpp_id1}')]
-  Click Element                       xpath=.//*[@id='select']
-# Додати специфікацю кінець
+  Input text                          name=form-0-description    ${items_description}
+  Input text                          name=form-0-quantity   ${quantity}
+  Input text                          name=form-0-deliveryAddress_countryName   ${countryName}
+  Input text                          name=form-0-deliveryDate_endDate       ${delivery_end_date}
 
-  Unselect Frame
-  Input text                          name=plan_date                      ${enquiry_end_date}
-  Input text                          name=tender_enquiryPeriod_endDate   ${enquiry_end_date}
-  Input text                          name=tender_tenderPeriod_endDate    ${end_date}
+  Click Element                       xpath=//*[@id="default"]/div[3]/div[1]/section[2]/div/div/form/div[3]/div[2]/div/button
+  Wait Until Page Contains            ${description}    30
 
-  Додати предмет    ${items[0]}   0
-  Run Keyword if   '${mode}' == 'multi'   Додати багато предметів   items
-  Unselect Frame
-
-  Click Element                       xpath= //button[@value='publicate']
-  Wait Until Page Contains            Тендер опубліковано    30
-
-  ${tender_UAid}=   Get Text          xpath=//*/section[6]/table/tbody/tr[2]/td[2]
-  ${Ids}=   Convert To String         ${tender_UAid}
-  Run keyword if   '${mode}' == 'multi'   Set Multi Ids   ${tender_UAid}
-  [return]  ${Ids}
 
 Set Multi Ids
   [Arguments]  @{ARGUMENTS}
