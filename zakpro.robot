@@ -28,41 +28,27 @@ ${locator.questions[0].date}         xpath = //div[@class='date']
 ${locator.questions[0].answer}       xpath=//div[@class = 'answer relative']//div[@class = 'text']
 
 *** Keywords ***
+
 Підготувати клієнт для користувача
-  [Arguments]  @{ARGUMENTS}
-  [Documentation]  Відкрити браузер, створити об’єкт api wrapper, тощо
-  ...      ${ARGUMENTS[0]} ==  username
-  Open Browser
-  ...      ${USERS.users['${ARGUMENTS[0]}'].homepage}
-  ...      ${USERS.users['${ARGUMENTS[0]}'].browser}
-  ...      alias=${ARGUMENTS[0]}
-  Set Window Size       @{USERS.users['${ARGUMENTS[0]}'].size}
-  Set Window Position   @{USERS.users['${ARGUMENTS[0]}'].position}
-  Run Keyword And Ignore Error       Pre Login   ${ARGUMENTS[0]}
-  Wait Until Page Contains Element   jquery=a[href="/cabinet"]
-  Click Element                      jquery=a[href="/cabinet"]
-  Run Keyword If                     '${username}' != 'DZO_Viewer'   Login
+    [Arguments]    @{ARGUMENTS}
+    [Documentation]    Відкрити браузер, створити об’єкт api wrapper, тощо
+    ...    ${ARGUMENTS[0]} == \ username
+    Open Browser    ${USERS.users['${ARGUMENTS[0]}'].homepage}    ${USERS.users['${ARGUMENTS[0]}'].browser}    alias=${ARGUMENTS[0]}
+    Set Window Size    @{USERS.users['${ARGUMENTS[0]}'].size}
+    Set Window Position    @{USERS.users['${ARGUMENTS[0]}'].position}
+    Run Keyword And Ignore Error    Pre Login    ${ARGUMENTS[0]}
+    Wait Until Page Contains Element    jquery=a[href="href="/accounts/login/"]
+    Click Element    jquery=a[href="href="/accounts/login/"]
+    Run Keyword If    '${username}'    != 'Zakpro_Viewer' Login
 
 Login
-  [Arguments]  @{ARGUMENTS}
-  Wait Until Page Contains Element   name=email   10
-  Sleep  1
-  Input text                         name=email      ${USERS.users['${username}'].login}
-  Sleep  2
-  Input text                         name=psw        ${USERS.users['${username}'].password}
-  Wait Until Page Contains Element   xpath=//button[contains(@class, 'btn')][./text()='Вхід в кабінет']   20
-  Click Element                      xpath=//button[contains(@class, 'btn')][./text()='Вхід в кабінет']
-
-Pre Login
-  [Arguments]  @{ARGUMENTS}
-  [Documentation]
-  ...      ${ARGUMENTS[0]} ==  username
-  ${login}=     Get Broker Property By Username  ${ARGUMENTS[0]}  login
-  ${password}=  Get Broker Property By Username  ${ARGUMENTS[0]}  password
-  Wait Until Page Contains Element  name=siteLogin  10
-  Input Text                        name=siteLogin  ${login}
-  Input Text                        name=sitePass   ${password}
-  Click Button                      xpath=.//*[@id='table1']/tbody/tr/td/form/p[3]/input
+    Wait Until Page Contains Element    name=login-username    10
+    Sleep    1
+    Input text    name=login-username    ${USERS.users['${username}'].login}
+    Sleep    2
+    Input text    name=login-password    ${USERS.users['${username}'].password}
+    Wait Until Page Contains Element    xpath=//button[contains(@class, 'btn')][./text()='Вхід в кабінет']    20
+    Click Element    xpath=//*[@id="login_form"]/button
 
 Створити тендер
   [Arguments]  @{ARGUMENTS}
