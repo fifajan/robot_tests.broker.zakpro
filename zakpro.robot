@@ -36,7 +36,6 @@ ${locator.questions[0].answer}       xpath=//div[@class = 'answer relative']//di
     Open Browser    ${USERS.users['${ARGUMENTS[0]}'].homepage}    ${USERS.users['${ARGUMENTS[0]}'].browser}    alias=${ARGUMENTS[0]}
     Set Window Size    @{USERS.users['${ARGUMENTS[0]}'].size}
     Set Window Position    @{USERS.users['${ARGUMENTS[0]}'].position}
-    Run Keyword And Ignore Error    Pre Login    ${ARGUMENTS[0]}
     Wait Until Page Contains Element    jquery=a[href="href="/accounts/login/"]
     Click Element    jquery=a[href="href="/accounts/login/"]
     Run Keyword If    '${username}'    != 'Zakpro_Viewer' Login
