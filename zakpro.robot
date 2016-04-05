@@ -79,7 +79,7 @@ Login
   Sleep   2
   Click Button    xpath=//button[@name="submit"]
   Sleep   1
-  Wait Until Page Contains Element   xpath=//*[@class="tender_title text-left"]/h2 5
+  Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2 5
   Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${zkp_tender_name} 10
   Sleep 15
 
