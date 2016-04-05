@@ -1,6 +1,13 @@
 # -*- coding: utf-8 -*-
 from datetime import timedelta, datetime
+from random import choice, seed
+import time
 
+LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
+NUMBERS = list(range(1000))
+
+seconds = int(time.time())
+seed(seconds)
 
 def get_all_zakpro_dates(period_interval=31):
     now = datetime.now()
@@ -10,6 +17,12 @@ def get_all_zakpro_dates(period_interval=31):
         'EndDate': (now + timedelta(minutes=(8 + period_interval))).strftime("%d.%m.%Y %H:%M"),
     }
 
+def get_random_id_zakpro():
+    int_1 = choice(NUMBERS)
+    int_2 = choice(NUMBERS)
+    char_1 = choice(LETTERS)
+    char_2 = choice(LETTERS)
+    return 'ZKP_TEST_%s%s%s%s' % (int_1, char_1, int_2, char_2)
 
 def convert_date_to_zakpro_tender(isodate):
     first_iso = datetime.strptime(isodate, "%d.%m.%y").isoformat()
