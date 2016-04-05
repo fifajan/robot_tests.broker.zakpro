@@ -82,13 +82,13 @@ Login
   Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2      5
   Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${zkp_tender_name}      10
   Sleep   1
-  Click Element  //*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[1]/a
+  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[1]/a
   Sleep   2
-  Click Element  //*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[2]/a
+  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[2]/a
   Sleep   3
-  Click Element  //*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[3]/a
+  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[3]/a
   Sleep   2
-  Click Element  //*[@id="content_inner"]/article/div[2]/div[1]/div[3]/h3
+  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[3]/h3
   Sleep   10800
 
 ### Создание тендера
