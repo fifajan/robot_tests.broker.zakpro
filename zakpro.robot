@@ -76,7 +76,11 @@ Login
   Sleep   1
   ${zkp_tender_name}=   get_random_id_zakpro
   Input text      xpath=//*[@id="id_title"]     ${zkp_tender_name}
-  Sleep   15
+  Sleep   2
+  Click Button    xpath=//button[@name="submit"]
+  Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2
+  Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${zkp_tender_name}
+  Sleep 15
 
 ### Создание тендера
 #    ${title}=                Get From Dictionary         ${ARGUMENTS[1].data}   title
