@@ -119,16 +119,16 @@ Login
   Sleep    1
 
   Click Button    xpath=//button[@name="submit"]
-  Sleep    4
+  Sleep    1
 
   Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2      10
   Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${title}      10
 
-  Sleep   3
+  Sleep   1
 
   ${tender_id}=     Get Text        xpath=//h6[@id='this_tender_id']
   Log To Console      ${tender_id}
-  Sleep   8
+  Sleep   1
   
   [return]    ${tender_id}
 
@@ -140,20 +140,36 @@ Login
   ...      ${ARGUMENTS[1]} ==  ${filepath}
   ...      ${ARGUMENTS[2]} ==  ${TENDER}
 
-  Go to   ${USERS.users['${username}'].default_page}
-  Input Text      id=search       ${ARGUMENTS[2]}
-  Click Button    xpath=//button[@type='submit']
-  Sleep   2
-  Click Element   xpath=(//td[contains(@class, 'qa_item_name')]//a)[1]
+# кабінет:
+  Click Element    xpath=//*[@id="top_page"]/div[2]/div/ul/li[1]/a 
+
+  Wait Until Page Contains Element   xpath=//a[@href='/accounts/mailbox/']  20
+
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
   Sleep   1
-  Click Element   xpath=//a[contains(@href, 'state_purchase/edit')]
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[3]/a
   Sleep   1
-  Choose File     xpath=//input[contains(@class, 'qa_state_offer_add_field')]   ${filepath}
-  Sleep   2
-  Click Button     id=submit_button
+
+  Wait Until Page Contains Element   xpath=//*[@id="contact_point_info"]/div[1]/div/div/div/table/tbody/tr[1]/td[5]/div[3]/a[2]    20
+  Click Element   xpath=//*[@id="contact_point_info"]/div[1]/div/div/div/table/tbody/tr[1]/td[5]/div[3]/a[2]
+
+  Sleep    4
+
+  Input text      xpath=//*[@id="id_title"]    Тест_док
+
+#Choose File     xpath=//input[contains(@class, 'qa_state_offer_add_field')]   ${filepath}
+#Click Button    //*[@id="id_file"]
   Sleep   3
   Capture Page Screenshot
 
+
+Дочекатись синхронізації з майданчиком
+  [Arguments]  @{ARGUMENTS}
+  [Documentation]
+  ...      ${ARGUMENTS[0]} ==  username
+  ...      ${ARGUMENTS[1]} ==  tender_uaid
+
+  Log To Console __SYNC__
 
 Пошук тендера по ідентифікатору
   [Arguments]  @{ARGUMENTS}
@@ -166,16 +182,19 @@ Login
   Log To Console    ${ARGUMENTS[1]}
   Log To Console    __END_VARIABLES__
 
-  Go to   ${USERS.users['${username}'].homepage}
-  Input Text      id=search_text_id   ${ARGUMENTS[1]}
-  Click Button    id=search_submit
-  Sleep  2
-  CLICK ELEMENT     xpath=(//a[contains(@href, 'net/dz/')])[1]
-  Sleep  1
-  Wait Until Page Contains    ${ARGUMENTS[1]}   10
-  Sleep  1
-  Click Element   id=show_lot_info-0
-  Capture Page Screenshot
+  Go to   get_tender_url_zakpro    ${ARGUMENTS[1]}
+  Log To Console   __TENDER_URL__
+  Sleep    10
+
+#  Input Text      id=search_text_id   ${ARGUMENTS[1]}
+#  Click Button    id=search_submit
+#  Sleep  2
+#  CLICK ELEMENT     xpath=(//a[contains(@href, 'net/dz/')])[1]
+#  Sleep  1
+#  Wait Until Page Contains    ${ARGUMENTS[1]}   10
+#  Sleep  1
+#  Click Element   id=show_lot_info-0
+#  Capture Page Screenshot
 
 #Задати питання
 #  [Arguments]  @{ARGUMENTS}

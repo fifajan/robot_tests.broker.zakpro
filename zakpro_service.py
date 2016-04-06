@@ -6,6 +6,9 @@ import time
 LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 NUMBERS = list(range(1000))
 
+PROTOCOL = 'https://'
+DOMAIN = 'market.zakupkipro.com'
+
 seconds = int(time.time())
 seed(seconds)
 
@@ -23,6 +26,9 @@ def get_random_id_zakpro():
     char_1 = choice(LETTERS)
     char_2 = choice(LETTERS)
     return 'ZKP_TEST_%s%s%s%s' % (int_1, char_1, int_2, char_2)
+
+def get_tender_url_zakpro(tender_id):
+    return PROTOCOL + DOMAIN + '/tenders/' + tender_id
 
 def convert_date_to_zakpro_tender(isodate):
     first_iso = datetime.strptime(isodate, "%d.%m.%y").isoformat()
