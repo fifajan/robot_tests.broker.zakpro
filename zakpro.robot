@@ -70,114 +70,67 @@ Login
   ...      ${ARGUMENTS[0]} ==  username
   ...      ${ARGUMENTS[1]} ==  tender_data
 
+
+  Log To Console    __VARIABLES__
+  Log To Console    ${ARGUMENTS[0]}
+  Log To Console    ${ARGUMENTS[1]}
+  Log To Console    __END_VARIABLES__
+
+#  ${zkp_tender_name}=      get_random_id_zakpro
+#  ${title}=                Get From Dictionary         ${ARGUMENTS[1].data}   title
+  ${title}=                get_random_id_zakpro
+  ${description}=          Get From Dictionary         ${ARGUMENTS[1].data}   description
+  ${items}=                Get From Dictionary         ${ARGUMENTS[1].data}   items
+  ${item0}=                Get From List               ${items}          0
+  ${descr_lot}=            Get From Dictionary         ${item0}                        description
+  ${budget}=               Get From Dictionary         ${ARGUMENTS[1].data.value}         amount
+  ${unit}=                 Get From Dictionary         ${items[0].unit}                name
+  ${cpv_id}=               Get From Dictionary         ${items[0].classification}      id
+  ${dkpp_id}=              Get From Dictionary         ${items[0].additionalClassifications[0]}      id
+  ${delivery_end}=         Get From Dictionary         ${items[0].deliveryDate}        endDate
+  ${postalCode}=           Get From Dictionary         ${items[0].deliveryAddress}     postalCode
+  ${locality}=             Get From Dictionary         ${items[0].deliveryAddress}     locality
+  ${streetAddress}=        Get From Dictionary         ${items[0].deliveryAddress}     streetAddress
+  ${latitude}=             Get From Dictionary         ${items[0].deliveryLocation}    latitude
+  ${longitude}=            Get From Dictionary         ${items[0].deliveryLocation}    longitude
+  ${quantity}=             Get From Dictionary         ${items[0]}                     quantity
+  ${step_rate}=            Get From Dictionary         ${ARGUMENTS[1].data.minimalStep}   amount
+  ${dates}=                get_all_zakpro_dates
+  ${end_period_adjustments}=      Get From Dictionary         ${dates}        EndPeriod
+  ${start_receive_offers}=        Get From Dictionary         ${dates}        StartDate
+  ${end_receive_offers}=          Get From Dictionary         ${dates}        EndDate
+
+  Log To Console    __GOT_DATA__
+
+
   Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
   Sleep   1
   Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[2]/a
   Sleep   1
-  ${zkp_tender_name}=   get_random_id_zakpro
-  Input text      xpath=//*[@id="id_title"]     ${zkp_tender_name}
-  Sleep   2
+  Input text      xpath=//*[@id="id_title"]        ${title}
+  Input text      xpath=//*[@id="id_description"]       ${description}
+######
+  Input text      xpath=//*[@id="id_form-0-description"]       ${descr_lot}
+  Input text      xpath=//*[@id="id_form-0-quantity"]       ${quantity}
+#  Input text      xpath=//*[@id="id_form-0-deliveryDate_endDate"]       ${delivery_end}
+  Input text      xpath=//*[@id="id_form-0-deliveryAddress_streetAddress"]       ${streetAddress}
+  Input text      xpath=//*[@id="id_form-0-deliveryAddress_locality"]       ${locality}
+
+  Sleep    1
+
   Click Button    xpath=//button[@name="submit"]
-  Sleep   1
-  Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2      5
-  Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${zkp_tender_name}      10
-  Sleep   1
-  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[1]/a
-  Sleep   2
-  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[2]/a
+  Sleep    4
+
+  Wait Until Page Contains Element   xpath=//div[@class="tender_title text-left"]/h2      10
+  Wait Until Element Contains   xpath=//div[@class="tender_title text-left"]/h2   ${title}      10
+
   Sleep   3
-  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[2]/div/ul/li[3]/a
-  Sleep   2
-  Click Element   xpath=//*[@id="content_inner"]/article/div[2]/div[1]/div[3]/h3
-  Sleep   10800
 
-### Создание тендера
-#    ${title}=                Get From Dictionary         ${ARGUMENTS[1].data}   title
-#    ${description}=          Get From Dictionary         ${ARGUMENTS[1].data}   description
-#    ${items}=                Get From Dictionary         ${ARGUMENTS[1].data}   items
-#    ${item0}=                Get From List               ${items}          0
-#    ${descr_lot}=            Get From Dictionary         ${item0}                        description
-#    ${budget}=               Get From Dictionary         ${ARGUMENTS[1].data.value}         amount
-#    ${unit}=                 Get From Dictionary         ${items[0].unit}                name
-#    ${cpv_id}=               Get From Dictionary         ${items[0].classification}      id
-#    ${dkpp_id}=              Get From Dictionary         ${items[0].additionalClassifications[0]}      id
-#    ${delivery_end}=         Get From Dictionary         ${items[0].deliveryDate}        endDate
-#    ${postalCode}=           Get From Dictionary         ${items[0].deliveryAddress}     postalCode
-#    ${locality}=             Get From Dictionary         ${items[0].deliveryAddress}     locality
-#    ${streetAddress}=        Get From Dictionary         ${items[0].deliveryAddress}     streetAddress
-#    ${latitude}=             Get From Dictionary         ${items[0].deliveryLocation}    latitude
-#    ${longitude}=            Get From Dictionary         ${items[0].deliveryLocation}    longitude
-#    ${quantity}=             Get From Dictionary         ${items[0]}                     quantity
-#    ${step_rate}=            Get From Dictionary         ${ARGUMENTS[1].data.minimalStep}   amount
-#    ${dates}=                get_all_zakpro_dates
-#    ${end_period_adjustments}=      Get From Dictionary         ${dates}        EndPeriod
-#    ${start_receive_offers}=        Get From Dictionary         ${dates}        StartDate
-#    ${end_receive_offers}=          Get From Dictionary         ${dates}        EndDate
-#
-#    Selenium2Library.Switch Browser    ${ARGUMENTS[0]}
-#    Wait Until Page Contains Element     id=js-btn-0    20
-#    Click Element                        id=js-btn-0
-#    Wait Until Page Contains Element     id=title       20
-#    Input text                           id=title               ${title}
-#    Input text                           id=descr               ${description}
-#    Input text        id=state_purchases_items-0-descr          ${descr_lot}
-#    Input text        id=state_purchases_items-0-quantity       ${quantity}
-#    Click Element     id=state_purchases_items-0-unit_id_dd
-#    Click Element     xpath=//li[@data-value='1']
-#    ## Cpv
-#    Click Element     xpath=//div[contains(@class, 'qa_cpv_button')]
-#    Wait Until Page Contains Element    xpath=//div[contains(@class, 'qa_cpv_popup')]//input[contains(@data-url, 'classifier_type=cpv')]    20
-#    Input text        xpath=//div[contains(@class, 'qa_cpv_popup')]//input[contains(@data-url, 'classifier_type=cpv')]    ${cpv_id}
-#    Click Element     xpath=//div[contains(@class, 'qa_cpv_popup')]//input[contains(@data-url, 'classifier_type=cpv')]
-#    Press Key         xpath=//div[contains(@class, 'qa_cpv_popup')]//input[contains(@data-url, 'classifier_type=cpv')]             \\13
-#    Wait Until Page Contains Element      xpath=//input[contains(@data-label, '44617100-9')]      20
-#    Click Element     xpath=//input[contains(@data-label, '44617100-9')]
-#    Click Element     xpath=//div[contains(@class, 'qa_cpv_popup')]//a[contains(@class, 'classifiers-submit')]
-#    ## dkkp
-#    Wait Until Page Contains Element   xpath=//div[contains(@class, 'qa_dkpp_button')]      20
-#    Click Element     xpath=//div[contains(@class, 'qa_dkpp_button')]
-#    Wait Until Page Contains Element    xpath=//div[contains(@class, 'qa_dkpp_popup')]//input[contains(@data-url, 'classifier_type=dkpp')]    20
-#    Input text        xpath=//div[contains(@class, 'qa_dkpp_popup')]//input[contains(@data-url, 'classifier_type=dkpp')]    ${dkpp_id}
-#    Click Element     xpath=//div[contains(@class, 'qa_dkpp_popup')]//input[contains(@data-url, 'classifier_type=dkpp')]
-#    Press Key         xpath=//div[contains(@class, 'qa_dkpp_popup')]//input[contains(@data-url, 'classifier_type=dkpp')]             \\13
-#    Wait Until Page Contains Element      id=classifier_id-1228     20
-#    Click Element     id=classifier_id-1228
-#    Click Element     xpath=//div[contains(@class, 'qa_dkpp_popup')]//a[contains(@class, 'classifiers-submit')]
-#    Input text        id=state_purchases_items-0-date_delivery_end          ${delivery_end}
-#    Click Element     id=state_purchases_items-0-date_delivery_end
-#    Press Key         id=state_purchases_items-0-date_delivery_end             \\13
-#    Input text        id=state_purchases_items-0-delivery_postal_code       ${postalCode}
-#    ## дроп даун области
-#    Click Element     id=state_purchases_items-0-delivery_region_dd
-#    Click Element     xpath=//li[contains(@data-value, 'Киевская')]
-#    Input text        id=state_purchases_items-0-delivery_locality          ${locality}
-#    Input text        id=state_purchases_items-0-delivery_street_address    ${streetAddress}
-#    Input text        id=state_purchases_items-0-delivery_latitude          ${latitude}
-#    Input text        id=state_purchases_items-0-delivery_longitude         ${longitude}
-#    Input text        id=amount             ${budget}
-#    Input text      id=dt_enquiry           ${end_period_adjustments}
-#    Sleep   1
-#    Click Element   id=dt_enquiry
-#    Press Key       id=dt_enquiry                   \\13
-#    Sleep   1
-#    Input text      id=dt_tender_start      ${start_receive_offers}
-#    Click Element   id=dt_tender_start
-#    Press Key       id=dt_tender_start              \\13
-#    Sleep   1
-#    Input text      id=dt_tender_end        ${end_receive_offers}
-#    Click Element   id=dt_tender_end
-#    Press Key       id=dt_tender_end                \\13
-#    Sleep   1
-#    input text      id=step                 ${step_rate}
-#    Click Button    id=submit_button
-#    Sleep   1
-#    Wait Until Page Does Not Contain     очікування…      1000
-#    Reload Page
-
-    ${tender_id}=     Get Text        xpath=//p[@id='qa_state_purchase_ua_id']
-    ${TENDER}=            Remove String     ${tender_id}      TenderID:
-    log to console      ${TENDER}
-    [return]    ${TENDER}
+  ${tender_id}=     Get Text        xpath=//h6[@id='this_tender_id']
+  Log To Console      ${tender_id}
+  Sleep   8
+  
+  [return]    ${tender_id}
 
 
 Завантажити документ
@@ -207,6 +160,12 @@ Login
   [Documentation]
   ...      ${ARGUMENTS[0]} ==  username
   ...      ${ARGUMENTS[1]} ==  tender_uaid
+
+  Log To Console    __VARIABLES__
+  Log To Console    ${ARGUMENTS[0]}
+  Log To Console    ${ARGUMENTS[1]}
+  Log To Console    __END_VARIABLES__
+
   Go to   ${USERS.users['${username}'].homepage}
   Input Text      id=search_text_id   ${ARGUMENTS[1]}
   Click Button    id=search_submit
