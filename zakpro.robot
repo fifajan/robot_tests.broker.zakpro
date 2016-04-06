@@ -163,13 +163,13 @@ Login
   Capture Page Screenshot
 
 
-Дочекатись синхронізації з майданчиком
-  [Arguments]  @{ARGUMENTS}
-  [Documentation]
-  ...      ${ARGUMENTS[0]} ==  username
-  ...      ${ARGUMENTS[1]} ==  tender_uaid
-
-  Log To Console __SYNC__
+#Дочекатись синхронізації з майданчиком
+#  [Arguments]  @{ARGUMENTS}
+#  [Documentation]
+#  ...      ${ARGUMENTS[0]} ==  username
+#  ...      ${ARGUMENTS[1]} ==  tender_uaid
+#
+#  Log To Console __SYNC__
 
 Пошук тендера по ідентифікатору
   [Arguments]  @{ARGUMENTS}
@@ -184,7 +184,7 @@ Login
 
   Go to   get_tender_url_zakpro    ${ARGUMENTS[1]}
   Log To Console   __TENDER_URL__
-  Sleep    10
+  Sleep    1
 
 #  Input Text      id=search_text_id   ${ARGUMENTS[1]}
 #  Click Button    id=search_submit
