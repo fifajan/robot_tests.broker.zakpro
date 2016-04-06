@@ -162,7 +162,6 @@ Login
   Sleep   3
   Capture Page Screenshot
 
-
 #Дочекатись синхронізації з майданчиком
 #  [Arguments]  @{ARGUMENTS}
 #  [Documentation]
