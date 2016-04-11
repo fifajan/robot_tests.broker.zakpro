@@ -39,23 +39,11 @@ Default:
             tender:  [0, 30]
     # Synchronization delay, in seconds
     timeout_on_wait: 300
-Zakpro:
-    intervals:
-        default:
-            enquiry: [0, 5]
-    keywords_file: zakpro
-    roles:
-        provider:       Zakpro_Provider1
-        provider1:      Zakpro_Provider2
-        tender_owner:   Zakpro_Owner
-        viewer:         Zakpro_Viewer
-    timeout_on_wait: 1
-    period_interval: 1
 Quinta:
     intervals:
         default:
-            enquiry: [0, 2]
-            tender:  [0, 5]
+            enquiry: [0, 20]
+            tender:  [0, 15]
         openua:
             tender:  [1, 15]
         openeu:
@@ -90,6 +78,19 @@ DZO:
         provider1:      DZO_Provider1
         viewer:         DZO_Viewer
     timeout_on_wait: 300
+Zakpro:
+    intervals:
+        default:
+            enquiry: [0, 20]
+            tender:  [0, 15]
+    keywords_file: zakpro
+    roles:
+        tender_owner:   Zakpro_Owner
+        provider:       Zakpro_Provider
+        provider1:      Zakpro_Provider1
+        viewer:         Zakpro_Viewer
+    timeout_on_wait: 300
+#    timeout_on_wait: 5
 Newtend:
     keywords_file: newtend
     roles:

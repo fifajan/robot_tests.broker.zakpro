@@ -1,36 +1,6 @@
 users:
-    Zakpro_Owner:
-        broker:   Zakpro
-        homepage: "https://market.zakupkipro.com/"
-        login:    owner.t@zakupkipro.com
-        password: own_pwd_44
-        browser:  firefox
-        position: [10, 10]
-        size:     [1280, 800]
-    Zakpro_Provider1:
-        broker:   Zakpro
-        homepage: "https://market.zakupkipro.com/"
-        login:    provider1.t@zakupkipro.com
-        password: pr1_pwd_55
-        browser:  firefox
-        position: [60, 60]
-        size:     [1280, 800]
-    Zakpro_Provider2:
-        broker:   Zakpro
-        homepage: "https://market.zakupkipro.com/"
-        login:    provider2.t@zakupkipro.com
-        password: pr2_pwd_66
-        browser:  firefox
-        position: [110, 110]
-        size:     [1280, 450]
-    Zakpro_Viewer:
-        broker:   Zakpro
-        homepage: "https://market.zakupkipro.com/"
-        browser:  firefox
-        position: [160, 160]
-        size: [1280, 800]
     Tender_Owner:
-        api_key:  e9c3ccb8e8124f26941d5f9639a4ebc3
+        api_key:  39deb0518e404fc097e5b46eda787730
         broker:   Quinta
     Tender_User:
         api_key:  e9c3ccb8e8124f26941d5f9639a4ebc3
@@ -101,6 +71,36 @@ users:
         browser:  firefox
         position: [0, 0]
         size:     [1366, 800]
+    Zakpro_Owner:
+        broker:   Zakpro
+        homepage: "https://market.zakupkipro.com/"
+        login:    owner.t@zakupkipro.com
+        password: own_pwd_44
+        browser:  firefox
+        position: [10, 10]
+        size:     [1366, 800]
+    Zakpro_Provider:
+        broker:   Zakpro
+        homepage: "https://market.zakupkipro.com/"
+        login:    provider1.t@zakupkipro.com
+        password: pr1_pwd_55
+        browser:  firefox
+        position: [30, 30]
+        size:     [1366, 800]
+    Zakpro_Provider1:
+        broker:   Zakpro
+        homepage: "https://market.zakupkipro.com/"
+        login:    provider2.t@zakupkipro.com
+        password: pr2_pwd_66
+        browser:  firefox
+        position: [50, 50]
+        size:     [1366, 800]
+    Zakpro_Viewer:
+        broker:   Zakpro
+        homepage: "https://market.zakupkipro.com/"
+        browser:  firefox
+        position: [70, 70]
+        size: [1366, 800]
     Newtend_Owner:
         broker:   Newtend
         homepage: "http://dev23.newtend.com/opc/tenders"
