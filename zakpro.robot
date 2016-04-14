@@ -110,9 +110,10 @@ Login
   ${start_receive_offers}=        Get From Dictionary         ${dates}        StartDate
   ${end_receive_offers}=          Get From Dictionary         ${dates}        EndDate
 
-  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
+
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[4]/a
   Sleep   1
-  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[2]/a
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[4]/ul/li[1]/a
   Sleep   1
   Input text      xpath=//*[@id="id_title"]        ${title}
   Input text      xpath=//*[@id="id_description"]       ${description}
@@ -160,9 +161,9 @@ Login
 
   Wait Until Page Contains Element   xpath=//a[@href='/accounts/mailbox/']  20
 
-  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/a/i[2]
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[4]/a/i[2]
   Sleep   1
-  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[3]/ul/li[3]/a
+  Click Element   xpath=//*[@id="default"]/div[3]/aside[1]/section/ul/li[4]/ul/li[3]/a
   Sleep   1
 
   Wait Until Page Contains Element   xpath=//*[@id="contact_point_info"]/div[1]/div/div/div/table/tbody/tr[1]/td[1]/div/button    20
