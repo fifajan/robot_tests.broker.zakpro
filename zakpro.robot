@@ -58,7 +58,7 @@ ${locator.items[0].additionalClassifications[0].description}    xpath=//dd[conta
   ...      alias=${ARGUMENTS[0]}
   Set Window Size       @{USERS.users['${ARGUMENTS[0]}'].size}
   Set Window Position   @{USERS.users['${ARGUMENTS[0]}'].position}
-  Run Keyword If                     '${ARGUMENTS[0]}' != 'Zakpro_Viewer'   Login   ${ARGUMENTS[0]}
+  Run Keyword If                     '${ARGUMENTS[0]}' != 'zakpro_Viewer'   Login   ${ARGUMENTS[0]}
 
 
 Login
@@ -82,7 +82,7 @@ Login
   ...      ${ARGUMENTS[1]} ==  tender_data
   ${username}=            Set Variable   ${ARGUMENTS[0]}
   ${tender_data}=         procuringEntity_name_zakpro                                ${ARGUMENTS[1]}
-  Set To Dictionary  ${USERS.users['Zakpro_Owner']}  tender_data  ${tender_data}
+  Set To Dictionary  ${USERS.users['${tender_owner}']}  tender_data  ${tender_data}
 
   ${title}=                Get From Dictionary         ${ARGUMENTS[1].data}   description
   ${proc_name}=            Get From Dictionary         ${ARGUMENTS[1].data.procuringEntity}   name
