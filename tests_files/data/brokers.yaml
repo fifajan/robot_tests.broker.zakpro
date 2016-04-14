@@ -23,38 +23,39 @@ Default:
             #
             # First number in list:  Delay before period starts (for startDate)
             # Second number in list: Duration of period (for endDate)
-            enquiry: [0, 11]
-            tender:  [0, 31]
+            enquiry: [0, 1]
+            tender:  [0, 1]
         openua:
             # accelerator: Integer value
             # This is not a name of period
             # Please refer to API documentation to find out what's this
             accelerator: 1440
-            tender:  [0, 15]
+            tender:  [0, 1]
             # Please remember that openUA and openEU procedures
             # forbid anyone to set or modify enquiryPeriod
             # (it is set automatically)
         openeu:
             accelerator: 1440
-            tender:  [0, 30]
+            tender:  [0, 1]
     # Synchronization delay, in seconds
     timeout_on_wait: 300
 Quinta:
     intervals:
         default:
-            enquiry: [0, 20]
-            tender:  [0, 15]
+            enquiry: [0, 1]
+            tender:  [0, 1]
         openua:
-            tender:  [1, 15]
+            tender:  [1, 1]
         openeu:
-            tender:  [1, 30]
+            tender:  [1, 1]
     keywords_file: openprocurement_client
     roles:
         provider:       Tender_User
         provider1:      Tender_User1
         tender_owner:   Tender_Owner
         viewer:         Tender_Viewer
-    timeout_on_wait: 15
+    timeout_on_wait: 1
+#    timeout_on_wait: 15
 E-tender:
     intervals:
         default:
@@ -81,16 +82,16 @@ DZO:
 Zakpro:
     intervals:
         default:
-            enquiry: [0, 20]
-            tender:  [0, 15]
+            enquiry: [0, 1]
+            tender:  [0, 1]
     keywords_file: zakpro
     roles:
         tender_owner:   Zakpro_Owner
         provider:       Zakpro_Provider
         provider1:      Zakpro_Provider1
         viewer:         Zakpro_Viewer
-    timeout_on_wait: 300
-#    timeout_on_wait: 5
+#    timeout_on_wait: 300
+    timeout_on_wait: 1
 Newtend:
     keywords_file: newtend
     roles:

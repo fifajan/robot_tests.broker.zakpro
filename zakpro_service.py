@@ -3,6 +3,8 @@ from datetime import timedelta, datetime
 from random import choice, seed
 import time
 
+from urllib2 import urlopen
+
 LETTERS = ['A', 'B', 'C', 'D', 'E', 'F']
 NUMBERS = list(range(1000))
 
@@ -22,6 +24,11 @@ def get_all_zakpro_dates(period_interval=31):
         'StartDate': (now + timedelta(minutes=8)).strftime("%d.%m.%Y %H:%M"),
         'EndDate': (now + timedelta(minutes=(8 + period_interval))).strftime("%d.%m.%Y %H:%M"),
     }
+
+def trigger_search_sync_zakpro():
+    sync_url = 'https://market.zakupkipro.com/sync_es_stuff'
+    resp = urlopen(sync_url)
+    return '__SYNC_TRIGGERED__'
 
 def get_random_id_zakpro():
     int_1 = choice(NUMBERS)
@@ -53,6 +60,8 @@ def convert_date_to_zakpro_tender_enddate(isodate):
 
 def procuringEntity_name_zakpro(INITIAL_TENDER_DATA):
     INITIAL_TENDER_DATA.data.procuringEntity['name'] = u'ТОВ "Прозорі Люди"'
+    INITIAL_TENDER_DATA.data['value']['valueAddedTaxIncluded'] = False
+#    INITIAL_TENDER_DATA.data['minimalStep'] = int(INITIAL_TENDER_DATA.data['minimalStep'])
     return INITIAL_TENDER_DATA
 
 
