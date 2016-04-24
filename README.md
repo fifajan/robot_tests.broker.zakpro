@@ -1,6 +1,6 @@
 # robot_tests.broker.zakpro
 
-[![Join the chat at https://gitter.im/openprocurement/robot_tests.broker.publicbid](https://badges.gitter.im/openprocurement/robot_tests.broker.publicbid.svg)](https://gitter.im/openprocurement/robot_tests.broker.publicbid)
+[![Join the chat at https://gitter.im/openprocurement/robot_tests.broker.zakpro](https://badges.gitter.im/openprocurement/robot_tests.broker.zakpro.svg)](https://gitter.im/openprocurement/robot_tests.broker.zakpro)
 
 Auto test for market.zakupkipro.com ProZorro-powered marketplace.
 
